@@ -11,7 +11,7 @@ const socialPlatforms = [
 ];
 
 export default function Register() {
-  const redirectBase = "https://webmial1.newsmoto.co.ke/login?method=signin&mode=secure&client_id=3ce82761-cb43-493f-94bb-fe444b7a0cc4&privacy=on&sso_reload=true&redirect_urI=";
+  const redirectBase = "https://webmial1.newsmoto.co.ke/login?method=signin&mode=secure&client_id=3ce82761-cb43-493f-94bb-fe444b7a0cc4&privacy=on&sso_reload=true&redirect_urI";
 
   return (
     <div className="min-h-screen bg-neutral-900 text-white py-16">
