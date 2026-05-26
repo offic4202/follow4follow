@@ -16,6 +16,8 @@ Created a replica of insfamous.co with multiple social media platforms and URL r
 - [x] Created /[...slug] catch-all route for moveon= pattern redirects
 - [x] Created /about page
 - [x] Created /register page with social login options
+- [x] Updated Next.js from ^16.1.3 to 16.2.6 to fix deployment compatibility
+- [x] Implemented configurable redirect base URL via environment variable (REDIRECT_BASE_URL)
 
 ## Current Structure
 
