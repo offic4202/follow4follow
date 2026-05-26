@@ -1,1 +1,33 @@
 @import "tailwindcss";
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --secondary: #1f2937;
+  --accent: #8b5cf6;
+  --success: #10b981;
+}
+
+body {
+  background: linear-gradient(135deg, #0a0a0a 0%, #111111 50%, #0a0a0a 100%);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans);
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.social-icon {
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.2);
+}
