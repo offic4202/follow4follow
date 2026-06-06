@@ -1,6 +1,6 @@
 interface SocialIconProps {
   name: string;
-  icon: "instagram" | "tiktok" | "youtube" | "twitter" | "facebook" | "linkedin" | "snapchat" | "pinterest";
+  icon: "instagram" | "tiktok" | "youtube" | "twitter" | "facebook" | "linkedin" | "snapchat" | "pinterest" | "whatsapp" | "telegram";
   color: string;
 }
 
