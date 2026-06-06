@@ -4,13 +4,15 @@ import Link from "next/link";
 
 const socialPlatforms = [
   { name: "Instagram", icon: "instagram", color: "#E4405F", domain: "instagram.com" },
-  { name: "TikTok", icon: "tiktok", color: "#000000", domain: "tiktok.com" },
+  { name: "TikTok", icon: "tiktok", color: "#000000", domain: "www.tiktok.com" },
   { name: "YouTube", icon: "youtube", color: "#FF0000", domain: "youtube.com" },
   { name: "Twitter", icon: "twitter", color: "#1DA1F2", domain: "twitter.com" },
   { name: "Facebook", icon: "facebook", color: "#1877F2", domain: "facebook.com" },
   { name: "LinkedIn", icon: "linkedin", color: "#0A66C2", domain: "linkedin.com" },
-  { name: "Snapchat", icon: "snapchat", color: "#FFFC00", domain: "snapchat.com" },
+  { name: "Snapchat", icon: "snapchat", color: "#FFFC00", domain: "web.snapchat.com" },
   { name: "Pinterest", icon: "pinterest", color: "#BD081C", domain: "pinterest.com" },
+  { name: "WhatsApp", icon: "whatsapp", color: "#25D366", domain: "web.whatsapp.com" },
+  { name: "Telegram", icon: "telegram", color: "#2CA5E0", domain: "web.telegram.org" },
 ];
 
 function createRedirectUrl(targetUrl: string): string {
