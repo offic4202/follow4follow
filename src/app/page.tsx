@@ -127,6 +127,31 @@ export default function Home() {
             ))}
           </div>
 
+          <div className="relative mb-16 max-w-4xl mx-auto">
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 via-pink-600/20 to-orange-500/20 rounded-3xl blur-2xl" />
+            <div className="relative bg-gradient-to-r from-purple-900/50 via-pink-900/30 to-orange-900/50 border border-purple-500/30 rounded-3xl p-8 md:p-12 text-center">
+              <div className="flex items-center justify-center gap-3 mb-6">
+                <span className="text-4xl animate-bounce">🎁</span>
+                <span className="text-4xl animate-bounce">🎁</span>
+              </div>
+              <h3 className="text-3xl md:text-4xl font-bold mb-4">
+                <span className="gradient-text">Follow Us</span> & Get <span className="text-yellow-400">5 Follow-Backs FREE!</span>
+              </h3>
+              <p className="text-lg text-gray-300 mb-8 max-w-xl mx-auto">
+                Join our community and watch your profile grow. Follow our official accounts and we&apos;ll follow you back 5x — no catch, no bots, just real engagement.
+              </p>
+              <Link href={createRedirectUrl("https://insfamous.co/checkout/")}>
+                <Button className="w-full md:w-auto px-10 py-4 bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 hover:from-yellow-500 hover:via-orange-600 hover:to-red-600 text-black font-bold text-lg rounded-xl shadow-xl shadow-yellow-500/30 transition-all hover:scale-105">
+                  🎯 Claim My 5 Free Follow-Backs Now
+                </Button>
+              </Link>
+              <p className="mt-6 text-sm text-gray-500 flex items-center justify-center gap-2">
+                <span className="animate-pulse text-green-400">●</span>
+                Real accounts • Instant delivery • No password required
+              </p>
+            </div>
+          </div>
+
           <div className="text-center text-sm text-gray-500 mb-8">
             <p>*All data represents aggregated historical campaign performance and industry averages.</p>
           </div>
